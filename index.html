@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에듀엠택 - 디지털 교육 솔루션</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s, text-underline-offset 0.3s;
+        }
+
+        nav a:hover {
+            color: #000;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .slide-number {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        .slide-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            max-width: 900px;
+        }
+
+        .slide-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            max-width: 700px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+        }
+
+        .contact-btn:hover {
+            background: #000;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+        }
+
+        /* Company Info Section */
+        .company-info {
+            padding: 120px 40px;
+            background: #f8f8f8;
+        }
+
+        .company-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .company-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .company-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .company-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 120px 40px;
+            background: white;
+        }
+
+        .values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .values-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 80px;
+            line-height: 1.5;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .value-item {
+            padding: 50px 30px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+        }
+
+        .value-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .value-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Innovation Section */
+        .innovation-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .innovation-label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .innovation-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .innovation-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 120px 40px;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            padding: 60px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            transition: background 0.3s, color 0.3s, transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .service-card:hover {
+            background: #000;
+            color: white;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0,0,0,0.16);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .service-card:hover p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .service-link {
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .service-card:hover .service-link {
+            color: white;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .mission-label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .mission-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mission-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .mission-btn:hover {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: 120px 40px;
+            background: white;
+        }
+
+        .news-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .news-header {
+            margin-bottom: 60px;
+        }
+
+        .news-label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .news-title {
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .news-card {
+            padding: 40px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .news-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #000;
+            color: white;
+            font-size: 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .news-card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .news-meta {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .cta-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-info p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .footer-contact h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 12px;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        /* Anchor offset for fixed header */
+        #company, #business, #products, #contact {
+            scroll-margin-top: 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .company-container,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 36px;
+            }
+
+            .slide-subtitle {
+                font-size: 16px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .company-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">EduMtech</a>
+            <nav>
+                <ul>
+                    <li><a href="company.html">회사소개</a></li>
+                    <li><a href="business.html">사업분야</a></li>
+                    <li><a href="#products">제품소개</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider">
+        <div class="slide active" style="background-image: url('test.jpg');">
+            <div class="slide-content">
+                <div class="slide-number">01 / 03</div>
+                <h1 class="slide-title">에듀엠택, 디지털 교육의<br>학습 경험을 혁신합니다</h1>
+                <p class="slide-subtitle">학교·기업·공공 교육을 위한 통합 학습 플랫폼과<br>AI 기반 학습 분석으로 성과를 만듭니다.</p>
+                <a href="#company" class="contact-btn">회사 소개 →</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('test.jpg');">
+            <div class="slide-content">
+                <div class="slide-number">02 / 03</div>
+                <h1 class="slide-title">학습자 중심의<br>LMS·콘텐츠·운영을 한 번에</h1>
+                <p class="slide-subtitle">LMS 구축, 맞춤형 교육콘텐츠 제작, 운영/평가까지<br>교육 전 과정을 데이터로 연결합니다.</p>
+                <a href="business.html" class="contact-btn">사업분야 보기 →</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('test.jpg');">
+            <div class="slide-content">
+                <div class="slide-number">03 / 03</div>
+                <h1 class="slide-title">AI 학습분석으로<br>교육 효과를 가시화합니다</h1>
+                <p class="slide-subtitle">학습 데이터 기반 리포트와 맞춤 추천으로<br>개별 학습 성과와 조직의 교육 ROI를 높입니다.</p>
+                <a href="company.html" class="contact-btn">에듀엠택 알아보기 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info Section -->
+    <section class="company-info" id="company">
+        <div class="company-container">
+            <div class="company-text">
+                <h2>에듀엠택, 디지털 교육의<br>성장을 설계합니다</h2>
+                <p><strong>교육 현장의 요구를 반영한 LMS, 교육콘텐츠, 학습분석으로<br>학습자 경험과 교육 성과를 동시에 향상합니다.</strong></p>
+                <br>
+                <p>학교·기업·공공기관을 위한 맞춤형 교육 플랫폼을 구축하고, 운영·평가·리포팅까지 전 과정을 데이터로 연결하는 통합 솔루션을 제공합니다.</p>
+            </div>
+            <div class="company-stats">
+                <div class="stat-item">
+                    <div class="stat-label">설립연도</div>
+                    <div class="stat-value">2018년</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">도입 기관</div>
+                    <div class="stat-value">300+ 기관</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">운영 과정</div>
+                    <div class="stat-value">2,500+ 과정</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">고객만족도</div>
+                    <div class="stat-value">98%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <h2 class="values-title">에듀엠택은 학습자 경험을 최우선으로<br>교육의 본질에 집중합니다.</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>교육 성과</h3>
+                    <p>Learning Outcomes</p>
+                </div>
+                <div class="value-item">
+                    <h3>확장성</h3>
+                    <p>Scalability</p>
+                </div>
+                <div class="value-item">
+                    <h3>데이터 기반</h3>
+                    <p>Data-Driven</p>
+                </div>
+                <div class="value-item">
+                    <h3>접근성</h3>
+                    <p>Accessibility</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="innovation-section">
+        <div class="innovation-label">INNOVATION</div>
+        <h2 class="innovation-title">변화의 힘으로<br>새로운 미래를 만듭니다.</h2>
+        <p class="innovation-subtitle">AI·데이터 기반의 맞춤 학습 혁신, 에듀엠택</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="business">
+        <div class="services-container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>LMS 구축·운영</h3>
+                    <h4 style="font-size: 20px; margin-bottom: 20px;">기관 맞춤형 학습관리시스템</h4>
+                    <p>기관의 교육 목적과 정책을 반영한 맞춤형 LMS를 구축하고, 수강/과제/평가/인증까지 전 과정을 안정적으로 운영합니다.</p>
+                    <a href="business.html" class="service-link">자세히 보기 →</a>
+                </div>
+                <div class="service-card">
+                    <h3>디지털 콘텐츠 제작</h3>
+                    <h4 style="font-size: 20px; margin-bottom: 20px;">과정 설계부터 저작·배포까지</h4>
+                    <p>교육 목표에 맞춘 커리큘럼 설계와 멀티디바이스 학습이 가능한 인터랙티브 콘텐츠를 제작합니다.</p>
+                    <a href="business.html" class="service-link">자세히 보기 →</a>
+                </div>
+                <div class="service-card">
+                    <h3>AI 학습분석</h3>
+                    <h4 style="font-size: 20px; margin-bottom: 20px;">데이터 기반 성과 관리</h4>
+                    <p>학습 데이터 수집/시각화/리포팅으로 학습 성과를 가시화하고, 개인별 추천으로 몰입도를 높입니다.</p>
+                    <a href="business.html" class="service-link">자세히 보기 →</a>
+                </div>
+                <div class="service-card">
+                    <h3>운영·컨설팅</h3>
+                    <h4 style="font-size: 20px; margin-bottom: 20px;">전담 운영 및 고도화 지원</h4>
+                    <p>교육 운영 대행부터 시스템 고도화 컨설팅까지, 내부 리소스 부담 없이 안정적인 교육 운영을 지원합니다.</p>
+                    <a href="business.html" class="service-link">자세히 보기 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="mission-label">MISSION</div>
+        <h2 class="mission-title">누구나 쉽게 배우고 성장할 수 있도록,<br>교육의 디지털 전환을 가속합니다.</h2>
+        <a href="company.html" class="mission-btn">에듀엠택 더 알아보기 →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">EduMtech</div>
+                <div class="footer-links">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이용약관</a>
+                </div>
+                <p><strong>회사명</strong> | EduMtech      <strong>대표자</strong> | OOO</p>
+                <p><strong>사업자등록번호</strong> | 123-45-67890</p>
+                <p><strong>EMAIL</strong> | temkit@naver.com</p>
+                <p><strong>TEL</strong> | 070-1234-5678      <strong>FAX</strong> | 070-1234-5678</p>
+                <p><strong>ADDRESS</strong> | 서울특별시 강남구 테헤란로 123, 강남빌딩 12층</p>
+            </div>
+            <div class="footer-contact">
+                <h3>070-1234-5678</h3>
+                <p>MON — FRI (9 AM ~ 6 PM)</p>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="company.html">회사소개</a></li>
+                    <li><a href="business.html">사업분야</a></li>
+                    <li><a href="#products">제품소개</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
