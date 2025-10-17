@@ -3,80 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회사소개 - 에듀엠택</title>
+    <title>회사소개 - 에듀엠텍</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="common.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Focus visibility */
-        a:focus-visible, button:focus-visible {
-            outline: 2px solid #000;
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #000;
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s, text-underline-offset 0.3s;
-        }
-
-        nav a:hover {
-            color: #000;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
+        /* Page-specific styles */
 
         /* Hero Section */
         .hero-section {
             height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('test.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/hector-j-rivas-1FxMET2U5dU-unsplash.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -107,33 +43,22 @@
         }
 
         .greeting-container {
-            max-width: 1400px;
+            max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .greeting-image {
-            width: 100%;
-            height: 500px;
-            background: url('test.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
+            text-align: center;
         }
 
         .greeting-content h3 {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 20px;
+            color: #0066ff;
         }
 
         .greeting-content h2 {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             line-height: 1.4;
         }
 
@@ -142,10 +67,13 @@
         }
 
         .greeting-content p {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.8;
-            color: #666;
-            margin-bottom: 20px;
+            color: #333;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .greeting-content p strong {
@@ -161,7 +89,7 @@
         /* History Section */
         .history-section {
             padding: 120px 40px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('test.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/hector-j-rivas-1FxMET2U5dU-unsplash.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -207,19 +135,19 @@
             font-weight: 600;
         }
 
-        /* Patent Section */
-        .patent-section {
+        /* Technical Expertise Section */
+        .expertise-section {
             padding: 120px 40px;
             background: white;
             text-align: center;
         }
 
-        .patent-container {
+        .expertise-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .patent-label {
+        .expertise-label {
             font-size: 14px;
             letter-spacing: 4px;
             color: #0066ff;
@@ -227,156 +155,194 @@
             font-weight: 600;
         }
 
-        .patent-title {
+        .expertise-title {
             font-size: 42px;
             font-weight: 700;
             margin-bottom: 20px;
         }
 
-        .patent-subtitle {
+        .expertise-subtitle {
             font-size: 16px;
             color: #666;
             margin-bottom: 60px;
         }
 
-        .patent-grid {
+        .expertise-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 30px;
-            margin-bottom: 80px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
-        .patent-item {
-            background: #f8f8f8;
-            padding: 40px 20px;
-            border-radius: 10px;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        .expertise-item {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 0;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
 
-        .patent-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+        .expertise-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
         }
 
-        .patent-badge {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+
+        .expertise-icon {
             margin-bottom: 20px;
         }
 
-        .patent-item h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .expertise-icon img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
         }
 
-        .patent-item p {
-            font-size: 12px;
-            color: #999;
+        .expertise-item h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000;
         }
 
-        /* Partners Section */
-        .partners-section {
-            padding: 80px 40px;
+        .expertise-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Service Features Section */
+        .features-section {
+            padding: 120px 40px;
             background: #f8f8f8;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .partners-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-
-        .partners-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 30px;
-        }
-
-        .partner-item {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100px;
+        .features-label {
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #0066ff;
+            margin-bottom: 20px;
             font-weight: 600;
-            color: #999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .features-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .features-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 0;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            text-align: left;
         }
 
-        .partner-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
         }
 
-        /* Vision Section */
-        .vision-section {
+        .feature-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #0066ff;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
             padding: 120px 40px;
             background: white;
         }
 
-        .vision-container {
+        .team-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .vision-header {
+        .team-header {
             text-align: center;
             margin-bottom: 80px;
         }
 
-        .vision-label {
+        .team-label {
             font-size: 14px;
             letter-spacing: 4px;
             margin-bottom: 20px;
             font-weight: 600;
         }
 
-        .vision-grid {
+        .team-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .team-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 60px;
         }
 
-        .vision-item {
+        .team-item {
             text-align: center;
             transition: transform 0.25s ease;
         }
 
-        .vision-item:hover { transform: translateY(-4px); }
+        .team-item:hover { transform: translateY(-4px); }
 
-        .vision-number {
+        .team-number {
             font-size: 72px;
             font-weight: 700;
             color: #f0f0f0;
             margin-bottom: 20px;
         }
 
-        .vision-item h3 {
+        .team-item h3 {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 20px;
         }
 
-        .vision-item p {
+        .team-item p {
             font-size: 15px;
             line-height: 1.8;
             color: #666;
@@ -420,7 +386,7 @@
         .location-map {
             width: 100%;
             height: 500px;
-            background: url('test.jpg') center/cover #ddd;
+            background: url('img/abbe-sublett-nxZDMUQhN4o-unsplash.jpg') center/cover #ddd;
             border-radius: 10px;
         }
 
@@ -496,75 +462,6 @@
             border: 2px solid white;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 80px 40px 40px;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-logo {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer-info p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 8px;
-        }
-
-        .footer-contact h3 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .footer-contact p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-nav ul {
-            list-style: none;
-        }
-
-        .footer-nav li {
-            margin-bottom: 12px;
-        }
-
-        .footer-nav a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-nav a:hover {
-            color: white;
-        }
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -573,15 +470,15 @@
                 grid-template-columns: 1fr;
             }
 
-            .patent-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .expertise-grid {
+                grid-template-columns: 1fr;
             }
 
-            .partners-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
-            .vision-grid {
+            .team-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -595,12 +492,12 @@
                 font-size: 36px;
             }
 
-            .patent-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .expertise-grid {
+                grid-template-columns: 1fr;
             }
 
-            .partners-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
             nav ul {
@@ -611,18 +508,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">EduMtech</a>
-            <nav>
-                <ul>
-                    <li><a href="company.html">회사소개</a></li>
-                    <li><a href="business.html">사업분야</a></li>
-                    <li><a href="#products">제품소개</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -633,17 +519,13 @@
     <!-- Greeting Section -->
     <section class="greeting-section">
         <div class="greeting-container">
-            <div class="greeting-image"></div>
             <div class="greeting-content">
                 <h3>인사말</h3>
-                <h2>디지털 교육 솔루션 기업,<br><span class="highlight">에듀엠택</span></h2>
-                <p>안녕하세요. 에듀엠택을 방문해주셔서 감사합니다.</p>
-                <p>에듀엠택은 학교·기업·공공기관을 위한 통합 학습 플랫폼과 교육콘텐츠, 학습분석 서비스를 제공하는 교육기술 기업입니다. <strong>현장의 요구를 반영한 맞춤형 LMS와 데이터 기반 리포팅으로 학습자 경험과 교육 성과를 동시에 향상합니다.</strong></p>
-                <p><strong>에듀엠택은 교육의 기획·운영·평가 전 과정을 데이터로 연결해 효율을 높이고, 기관의 교육 목표 달성을 돕는 전략적 파트너입니다.</strong> 안정적인 시스템과 전문 운영을 바탕으로, 고객과 함께 성장하는 디지털 교육 생태계를 만들어가겠습니다.</p>
-                <p>앞으로도 에듀엠택은 기술과 디자인, 사용성을 바탕으로 더 나은 학습 경험을 제공하기 위해 지속적으로 혁신하겠습니다. 감사합니다.</p>
+                <h2>공공기관 정보시스템 전문 기업,<br><span class="highlight">에듀엠텍</span></h2>
+                <p><strong>에듀엠텍은 공공기관과 교육기관의 업무 효율을 높이기 위해 안정적이고 신뢰할 수 있는 전산시스템을 구축하는 정보기술 전문기업입니다.</strong></p>
+                <p>전자정부표준프레임워크(eGovFrame)를 기반으로 교과서검정 전산시스템과 디지털교과서 검정 플랫폼 등 국가 교육 프로젝트를 수행하며, <strong>데이터 중심 행정 혁신의 파트너</strong>로 성장하고 있습니다.</p>
                 <div class="greeting-signature">
-                    <strong>EduMtech</strong><br>
-                    <strong>대표 OOO</strong>
+                    <strong>에듀엠텍 대표 박형식</strong>
                 </div>
             </div>
         </div>
@@ -657,147 +539,132 @@
             <div class="history-year">
                 <div class="year-label">2025</div>
                 <div class="history-item">
-                    <div class="history-month">03월</div>
-                    <div class="history-desc">신제품 출시, 국내 시장 점유율 1위 달성</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">01월</div>
-                    <div class="history-desc">글로벌 파트너십 체결 및 해외 진출 확대</div>
-                </div>
-            </div>
-
-            <div class="history-year">
-                <div class="year-label">2024</div>
-                <div class="history-item">
-                    <div class="history-month">12월</div>
-                    <div class="history-desc">연 매출 500억 돌파</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">10월</div>
-                    <div class="history-desc">사옥 확장 및 신규 부서 설립</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">08월</div>
-                    <div class="history-desc">차세대 기술 기반 서비스 론칭</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">06월</div>
-                    <div class="history-desc">ISO 국제 품질 인증 획득</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">04월</div>
-                    <div class="history-desc">대기업과 전략적 협업 계약 체결</div>
-                </div>
-                <div class="history-item">
-                    <div class="history-month">02월</div>
-                    <div class="history-desc">직원 복지 강화 정책 시행</div>
+                    <div class="history-month">진행</div>
+                    <div class="history-desc">교과서검정 전산시스템 유지보수 및 고도화 사업 수행</div>
                 </div>
             </div>
 
             <div class="history-year">
                 <div class="year-label">2023</div>
                 <div class="history-item">
-                    <div class="history-month">11월</div>
-                    <div class="history-desc">국내 스타트업 어워드 혁신상 수상</div>
+                    <div class="history-month">개발</div>
+                    <div class="history-desc">AI 디지털교과서 검정 프로세스 개발</div>
                 </div>
-                <div class="history-item">
-                    <div class="history-month">09월</div>
-                    <div class="history-desc">신규 브랜드 론칭 및 시장 진출</div>
                 </div>
+
+            <div class="history-year">
+                <div class="year-label">2022</div>
                 <div class="history-item">
-                    <div class="history-month">07월</div>
-                    <div class="history-desc">업계 최초 AI 기반 솔루션 개발</div>
+                    <div class="history-month">수행</div>
+                    <div class="history-desc">공공기관 클라우드 이전 사업 수행</div>
                 </div>
-                <div class="history-item">
-                    <div class="history-month">05월</div>
-                    <div class="history-desc">투자 유치 100억 원 달성</div>
                 </div>
+
+            <div class="history-year">
+                <div class="year-label">2020</div>
                 <div class="history-item">
-                    <div class="history-month">03월</div>
-                    <div class="history-desc">고객 만족도 조사 95% 달성</div>
+                    <div class="history-month">참여</div>
+                    <div class="history-desc">한국교육과정평가원 교과서검정 시스템 참여</div>
                 </div>
+            </div>
+
+            <div class="history-year">
+                <div class="year-label">2018</div>
                 <div class="history-item">
-                    <div class="history-month">01월</div>
-                    <div class="history-desc">창립 및 공식 서비스 개시</div>
+                    <div class="history-month">설립</div>
+                    <div class="history-desc">(주)에듀엠텍 설립</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Patent Section -->
-    <section class="patent-section">
-        <div class="patent-container">
-            <div class="patent-label">PATENT</div>
-            <h2 class="patent-title">인증현황</h2>
-            <p class="patent-subtitle">높은 품질과 신뢰성을 위해 다양한 인증을 획득했습니다.</p>
+    <!-- Technical Expertise Section -->
+    <section class="expertise-section">
+        <div class="expertise-container">
+            <div class="expertise-label">TECHNICAL EXPERTISE</div>
+            <h2 class="expertise-title">기술 역량</h2>
+            <p class="expertise-subtitle">전문 기술력으로 안정적인 공공정보시스템을 구현합니다.</p>
             
-            <div class="patent-grid">
-                <div class="patent-item">
-                    <div class="patent-badge">🏆</div>
-                    <h4>SAMPLE</h4>
-                    <p>NO 1234</p>
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <div class="expertise-icon">
+                            <img src="img/server.png" alt="전자정부표준프레임워크" loading="lazy">
+                        </div>
+                        <h4>전자정부표준프레임워크</h4>
+                        <p>확장성과 유지보수성을 확보한<br>효율적인 아키텍처 구현</p>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">
+                            <img src="img/analysis.png" alt="클라우드·데이터 기술" loading="lazy">
+                        </div>
+                        <h4>클라우드·데이터 기술</h4>
+                        <p>공공 클라우드 환경에서의<br>자원 관리 및 데이터 암호화</p>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">
+                            <img src="img/office-building.png" alt="보안 및 품질 관리" loading="lazy">
+                        </div>
+                        <h4>보안 및 품질 관리</h4>
+                        <p>Secure Coding과 취약점 점검을<br>통한 체계적 품질 관리</p>
+                    </div>
                 </div>
-                <div class="patent-item">
-                    <div class="patent-badge">🏆</div>
-                    <h4>SAMPLE</h4>
-                    <p>NO 1234</p>
+    </section>
+
+    <!-- Service Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-label">SERVICE FEATURES</div>
+            <h2 class="features-title">서비스 특징</h2>
+            <p class="features-subtitle">안정성과 사용성을 중심으로 한 차별화된 서비스를 제공합니다.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">01</div>
+                    <h3>24시간 365일 무중단 운영</h3>
+                    <p>장애 발생 시 즉각적인 원인 분석과 복구가 가능한 대응 프로세스를 갖추고 있으며, 야간·주말에도 비상 연락망을 통한 실시간 지원이 이루어집니다.</p>
                 </div>
-                <div class="patent-item">
-                    <div class="patent-badge">🏆</div>
-                    <h4>SAMPLE</h4>
-                    <p>NO 1234</p>
+                <div class="feature-item">
+                    <div class="feature-number">02</div>
+                    <h3>공공기관 수준의 보안 관리</h3>
+                    <p>개인정보 암호화, 접근 권한 제어, 네트워크 보안 점검 등 다단계 보호 체계를 통해 데이터의 안전성을 보장합니다.</p>
                 </div>
-                <div class="patent-item">
-                    <div class="patent-badge">🏆</div>
-                    <h4>SAMPLE</h4>
-                    <p>NO 1234</p>
-                </div>
-                <div class="patent-item">
-                    <div class="patent-badge">🏆</div>
-                    <h4>SAMPLE</h4>
-                    <p>NO 1234</p>
+                <div class="feature-item">
+                    <div class="feature-number">03</div>
+                    <h3>사용자 중심의 UI/UX 설계</h3>
+                    <p>전자정부 웹사이트 UI·UX 가이드라인을 기반으로 사용자가 쉽게 이해하고 조작할 수 있는 인터페이스를 제공합니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="partners-section">
-        <div class="partners-container">
-            <h2 class="partners-title">파트너사</h2>
-            <p style="color: #666; margin-bottom: 40px;">이미 수많은 기업들과 함께 성장해왔습니다.</p>
-            <div class="partners-grid">
-                <div class="partner-item">LOGO</div>
-                <div class="partner-item">LOGO</div>
-                <div class="partner-item">LOGO</div>
-                <div class="partner-item">LOGO</div>
-                <div class="partner-item">LOGO</div>
-                <div class="partner-item">LOGO</div>
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-header">
+                <div class="team-label">TEAM</div>
+                <h2 class="team-title">전문 조직</h2>
+                <p class="team-subtitle">체계적인 팀 구성으로 안정적인 서비스를 제공합니다.</p>
             </div>
+            <div class="team-grid">
+                <div class="team-item">
+                    <div class="team-number">01</div>
+                    <h3>PM / 총괄책임자</h3>
+                    <p>사업 총괄, 대외 협력을 담당하며 프로젝트의 성공적인 수행을 이끕니다.</p>
         </div>
-    </section>
-
-    <!-- Vision Section -->
-    <section class="vision-section">
-        <div class="vision-container">
-            <div class="vision-header">
-                <div class="vision-label">VISION</div>
-            </div>
-            <div class="vision-grid">
-                <div class="vision-item">
-                    <div class="vision-number">01</div>
-                    <h3>혁신과 지속 성장</h3>
-                    <p>끊임없는 연구와 기술 개발을 통해 혁신적인 솔루션을 제공하며, 업계를 선도하는 것은 물론, 변화하는 시장 환경 속에서도 지속적인 발전을 이루어 고객과 함께 성장합니다.</p>
+                <div class="team-item">
+                    <div class="team-number">02</div>
+                    <h3>UI/UX 팀</h3>
+                    <p>인터페이스 설계와 접근성 개선을 통해 사용자 친화적인 시스템을 구축합니다.</p>
                 </div>
-                <div class="vision-item">
-                    <div class="vision-number">02</div>
-                    <h3>고객 중심의 가치 창출</h3>
-                    <p>고객의 니즈를 최우선으로 고려하며, 최고의 제품과 서비스를 제공합니다. 신뢰와 만족을 바탕으로 장기적인 관계를 구축하고, 고객과 함께 새로운 가치를 만들어갑니다.</p>
+                <div class="team-item">
+                    <div class="team-number">03</div>
+                    <h3>시스템 개발팀</h3>
+                    <p>설계, 개발, 테스트, 시큐어 코딩을 담당하여 안전하고 견고한 시스템을 구현합니다.</p>
                 </div>
-                <div class="vision-item">
-                    <div class="vision-number">03</div>
-                    <h3>지속 가능성과 사회적 책임</h3>
-                    <p>환경 보호와 윤리적 경영을 바탕으로 지속 가능한 미래를 만들어가며, 사회에 긍정적인 영향을 미치는 책임감 있는 비즈니스를 실천합니다.</p>
+                <div class="team-item">
+                    <div class="team-number">04</div>
+                    <h3>유지보수팀</h3>
+                    <p>장애 대응, 정기 점검, 기술지원을 통해 지속적인 시스템 안정성을 보장합니다.</p>
                 </div>
             </div>
         </div>
@@ -813,32 +680,28 @@
             <div class="location-content">
                 <div class="location-map"></div>
                 <div class="location-info">
-                    <h3>에듀엠택</h3>
-                    <p class="address">서울특별시 강남구 테헤란로 123, 강남빌딩 12층</p>
+                    <h3>에듀엠텍</h3>
+                    <p class="address">서울시 성동구 성수일로 47 송도빌딩 301호 (우04779)</p>
                     <div class="info-grid">
                         <div class="info-item">
                             <div class="info-label">연락처</div>
-                            <div class="info-value">070-1234-5678</div>
+                            <div class="info-value">02-463-3664</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">팩스</div>
-                            <div class="info-value">070-1334-5678</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">이메일</div>
-                            <div class="info-value">temkit@naver.com</div>
+                            <div class="info-value">02-463-0962</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">설립연도</div>
                             <div class="info-value">2018년</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">홈페이지</div>
-                            <div class="info-value">temkit.kr</div>
+                            <div class="info-label">사업자등록번호</div>
+                            <div class="info-value">119-86-77942</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">사업분야</div>
-                            <div class="info-value">하이엔드 웹 디자인, 템플릿 개발, UX/UI 컨설팅</div>
+                            <div class="info-value">공공기관 정보시스템 구축, 시스템 운영 및 유지보수, 클라우드·데이터 솔루션</div>
                         </div>
                     </div>
                 </div>
@@ -847,35 +710,32 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <div class="footer-logo">EduMtech</div>
-                <div class="footer-links">
-                    <a href="#">개인정보처리방침</a>
-                    <a href="#">이용약관</a>
-                </div>
-                <p><strong>회사명</strong> | EduMtech      <strong>대표자</strong> | OOO</p>
-                <p><strong>사업자등록번호</strong> | 123-45-67890</p>
-                <p><strong>EMAIL</strong> | temkit@naver.com</p>
-                <p><strong>TEL</strong> | 070-1234-5678      <strong>FAX</strong> | 070-1234-5678</p>
-                <p><strong>ADDRESS</strong> | 서울특별시 강남구 테헤란로 123, 강남빌딩 12층</p>
-            </div>
-            <div class="footer-contact">
-                <h3>070-1234-5678</h3>
-                <p>MON — FRI (9 AM ~ 6 PM)</p>
-            </div>
-            <div class="footer-nav">
-                <ul>
-                    <li><a href="company.html">회사소개</a></li>
-                    <li><a href="business.html">사업분야</a></li>
-                    <li><a href="#products">제품소개</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script>
+        // Load header and footer
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
