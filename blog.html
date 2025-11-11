@@ -33,6 +33,378 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="assets/css/style.css">
     
+    <!--====== Custom Page Styles ======-->
+    <style>
+        /* 배경색 */
+        .bg-gray-alt {
+            background-color: #F8F9FC;
+        }
+
+        /* 섹션 아이콘 */
+        .section_icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #E8F2FF 0%, #F0F7FF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section_title .title span {
+            color: #0066FF;
+        }
+
+        /* 레퍼런스 케이스 카드 */
+        .reference_case_card {
+            position: relative;
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border-left: 4px solid #E8EEFF;
+            overflow: hidden;
+        }
+
+        .reference_case_card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0066FF 0%, #4D94FF 100%);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+            transform-origin: top;
+        }
+
+        .reference_case_card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.15);
+            border-left-color: transparent;
+        }
+
+        .reference_case_card:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* 연도 배지 */
+        .reference_year_badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #E8F2FF 0%, #F0F7FF 100%);
+            color: #0066FF;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .reference_case_card:hover .reference_year_badge {
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* 케이스 타이틀 */
+        .reference_case_title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 케이스 설명 */
+        .reference_case_description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* 프로젝트 카드 */
+        .reference_project_card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border-top: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reference_project_card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066FF 0%, #4D94FF 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .reference_project_card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.15);
+        }
+
+        .reference_project_card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* 프로젝트 아이콘 */
+        .reference_project_icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #E8F2FF 0%, #F0F7FF 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .reference_project_card:hover .reference_project_icon {
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            transform: rotateY(360deg);
+        }
+
+        .reference_project_icon i {
+            font-size: 40px;
+            color: #0066FF;
+            transition: all 0.4s ease;
+        }
+
+        .reference_project_card:hover .reference_project_icon i {
+            color: white;
+        }
+
+        /* 프로젝트 타이틀 */
+        .reference_project_title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* 프로젝트 설명 */
+        .reference_project_description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #E8EEFF;
+        }
+
+        /* 프로젝트 리스트 */
+        .reference_project_list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .reference_project_list li {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            padding-left: 5px;
+            position: relative;
+        }
+
+        .reference_project_list li:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* 고객사 로고 섹션 */
+        .client_logo_section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .client_logo_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .client_logo_item {
+            background: #F8F9FC;
+            padding: 40px 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            min-height: 120px;
+        }
+
+        .client_logo_item:hover {
+            background: white;
+            border-color: #0066FF;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+        }
+
+        .client_logo_item span {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2C2C2C;
+        }
+
+        /* 연도별 실적 타임라인 */
+        .timeline_section {
+            padding: 80px 0;
+            background: #F8F9FC;
+        }
+
+        .timeline_container {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 40px;
+        }
+
+        .timeline_container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #0066FF 0%, #4D94FF 100%);
+            border-radius: 2px;
+        }
+
+        .timeline_item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline_year {
+            position: absolute;
+            left: -52px;
+            top: 0;
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 3px 10px rgba(0, 102, 255, 0.3);
+            z-index: 1;
+        }
+
+        .timeline_content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline_content h6 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .timeline_content p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 991px) {
+            .reference_case_title {
+                font-size: 18px;
+                min-height: auto;
+            }
+
+            .reference_project_title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reference_case_card,
+            .reference_project_card {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+
+            .timeline_container {
+                padding-left: 30px;
+            }
+
+            .timeline_year {
+                left: -42px;
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            .timeline_item {
+                padding-left: 20px;
+            }
+
+            .client_logo_grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        /* 카테고리 필터 (선택적) */
+        .filter_buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter_btn {
+            padding: 10px 25px;
+            background: white;
+            color: #666;
+            border: 2px solid #E8EEFF;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter_btn:hover,
+        .filter_btn.active {
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -73,7 +445,7 @@
                         <div class="col-lg-6 col-md-8">
                             <div class="slider_content">
                                 <h2 class="slider_title wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.2s">레퍼런스</h2>
-                                <p class="wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.5s">에듀엠텍의 프로젝트 실적을 소개합니다.</p>
+                                <p class="wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.5s">검증된 기술력과 풍부한 경험으로<br>성공적인 프로젝트를 수행합니다</p>
                             </div> <!-- slider content -->
                         </div>
                     </div> <!-- row -->
@@ -83,11 +455,12 @@
     </section>
 
     <!--====== HEADER PART ENDS ======-->
+
     
     <!--====== REFERENCE PART START ======-->
 
     <!-- 주요 사례 섹션 -->
-    <section id="reference-cases" class="reference_area pt-80 pb-80">
+    <section id="reference-cases" class="reference_area pt-100 pb-80">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -96,72 +469,82 @@
                             <i class="lni lni-briefcase" style="font-size: 42px; color: #0066FF;"></i>
                         </div>
                         <h3 class="title">구축 및 유지보수 실적 <span>주요 사례</span></h3>
-                        <p>다년간의 경험과 검증된 기술로 성공적인 프로젝트를 수행합니다</p>
+                        <p style="color: #666; margin-top: 10px;">다년간의 경험과 검증된 기술로 성공적인 프로젝트를 수행합니다</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
+
+            <!-- 필터 버튼 (선택적) -->
+            <div class="filter_buttons wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                <button class="filter_btn active" data-filter="all">전체</button>
+                <button class="filter_btn" data-filter="si">SI</button>
+                <button class="filter_btn" data-filter="smart-factory">스마트팩토리</button>
+                <button class="filter_btn" data-filter="mes">MES</button>
+                <button class="filter_btn" data-filter="erp">ERP</button>
+            </div>
+
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-category="si">
                         <div class="reference_year_badge">2025</div>
                         <h5 class="reference_case_title">통합 물류 고도화</h5>
                         <p class="reference_case_description">3PL 통합 물류 운영 시스템을 고도화하고, 4PL 수준까지 확장 가능한 구조로 업그레이드</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-category="si">
                         <div class="reference_year_badge">2025</div>
                         <h5 class="reference_case_title">교과서검정 전산시스템 고도화</h5>
-                        <p class="reference_case_description">디지털교과서 검정 지원 및 병행 검정 프로세스 구축</p>
+                        <p class="reference_case_description">디지털교과서 검정 지원 및 병행 검정 프로세스 구축으로 차세대 교육 플랫폼 구현</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-category="si">
                         <div class="reference_year_badge">2024</div>
                         <h5 class="reference_case_title">대규모 물류·유통 3PL 통합 운영</h5>
-                        <p class="reference_case_description">대규모 물류·유통 기업 대상 3PL 통합 운영 시스템 구축</p>
+                        <p class="reference_case_description">대규모 물류·유통 기업 대상 3PL 통합 운영 시스템 구축 및 실시간 물류 추적 시스템 적용</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-category="erp">
                         <div class="reference_year_badge">2024</div>
                         <h5 class="reference_case_title">수입·유통 ERP 신규 구축</h5>
-                        <p class="reference_case_description">수입, 단가, 통관, 품목 관리 등 전 프로세스 포함</p>
+                        <p class="reference_case_description">수입, 단가, 통관, 품목 관리 등 전 프로세스 포함한 통합 ERP 시스템 구축</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" data-category="erp">
                         <div class="reference_year_badge">2023</div>
                         <h5 class="reference_case_title">ERP 모바일/웹 기능 고도화</h5>
-                        <p class="reference_case_description">ERP 모바일/웹 기능 고도화 및 1차 리뉴얼</p>
+                        <p class="reference_case_description">ERP 모바일/웹 기능 고도화 및 1차 리뉴얼로 사용자 경험 개선 및 접근성 향상</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s" data-category="si">
                         <div class="reference_year_badge">2023</div>
-                        <h5 class="reference_case_title">AI 디지털교과서 검정 프로세스 개발</h5>
-                        <p class="reference_case_description">AI 기반 디지털교과서 검정 프로세스 개발</p>
+                        <h5 class="reference_case_title">AI 디지털교과서 검정 프로세스</h5>
+                        <p class="reference_case_description">AI 기반 디지털교과서 검정 프로세스 개발로 검정 효율성 및 정확도 대폭 향상</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s" data-category="smart-factory">
                         <div class="reference_year_badge">2022</div>
                         <h5 class="reference_case_title">스마트 수배전반 예지보전 플랫폼</h5>
-                        <p class="reference_case_description">정부 R&D 과제 수행(창업성장 기술개발 사업)</p>
+                        <p class="reference_case_description">정부 R&D 과제 수행(창업성장 기술개발 사업) 및 특허 출원으로 기술력 검증</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s" data-category="erp">
                         <div class="reference_year_badge">2022</div>
                         <h5 class="reference_case_title">ERP 리뉴얼 및 재구축</h5>
-                        <p class="reference_case_description">클라우드 기반 전사 시스템 재정비</p>
+                        <p class="reference_case_description">클라우드 기반 전사 시스템 재정비로 확장성 및 안정성 확보</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_case_card">
+                    <div class="reference_case_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s" data-category="smart-factory mes">
                         <div class="reference_year_badge">2021</div>
                         <h5 class="reference_case_title">스마트팩토리 구축 사업</h5>
-                        <p class="reference_case_description">생산 관리, 경영 관리, 수·발주 관리까지 통합</p>
+                        <p class="reference_case_description">생산 관리, 경영 관리, 수·발주 관리까지 통합한 스마트팩토리 솔루션 구축</p>
                     </div>
                 </div>
             </div> <!-- row -->
@@ -169,7 +552,7 @@
     </section>
 
     <!-- 프로젝트별 소개 섹션 -->
-    <section id="reference-projects" class="reference_area pt-80 pb-80 bg-gray-alt">
+    <section id="reference-projects" class="reference_area pt-100 pb-80 bg-gray-alt">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -178,13 +561,13 @@
                             <i class="lni lni-layers" style="font-size: 42px; color: #0066FF;"></i>
                         </div>
                         <h3 class="title">프로젝트별 <span>소개</span></h3>
-                        <p>SI / Smart Factory / MES 분야별 프로젝트 실적</p>
+                        <p style="color: #666; margin-top: 10px;">SI / Smart Factory / MES 분야별 프로젝트 실적</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_project_card">
+                    <div class="reference_project_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
                         <div class="reference_project_icon">
                             <i class="lni lni-layout"></i>
                         </div>
@@ -193,38 +576,41 @@
                         <ul class="reference_project_list">
                             <li>• 교과서검정 전산시스템 구축 및 운영</li>
                             <li>• 디지털교과서 검정 플랫폼 개발</li>
-                            <li>• 공공기관 정보시스템 구축</li>
-                            <li>• 클라우드 기반 시스템 구축</li>
+                            <li>• 공공기관 클라우드 이전 사업</li>
+                            <li>• LMS 및 교육 시스템 구축</li>
+                            <li>• 통합 업무 시스템 구축 및 유지보수</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_project_card">
+                    <div class="reference_project_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
                         <div class="reference_project_icon">
                             <i class="lni lni-signal"></i>
                         </div>
-                        <h5 class="reference_project_title">Smart Factory 프로젝트</h5>
+                        <h5 class="reference_project_title">Smart Factory</h5>
                         <p class="reference_project_description">IoT 데이터 수집, 예지보전 시스템, 대시보드 구축 및 스마트팩토리 운영</p>
                         <ul class="reference_project_list">
                             <li>• IoT/설비 데이터 수집 및 모니터링</li>
-                            <li>• AI 기반 예지보전 시스템</li>
-                            <li>• 통합 대시보드 구축</li>
+                            <li>• AI 기반 예지보전 시스템 구축</li>
+                            <li>• 통합 대시보드 및 BI 시스템</li>
+                            <li>• 전력 제어/PLC 시스템 구축</li>
                             <li>• 스마트팩토리 운영 및 유지보수</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="reference_project_card">
+                    <div class="reference_project_card wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
                         <div class="reference_project_icon">
                             <i class="lni lni-apartment"></i>
                         </div>
-                        <h5 class="reference_project_title">MES 프로젝트</h5>
-                        <p class="reference_project_description">생산·공정·실적 관리 시스템, 설비/POP 연동, 품질 이력 관리 시스템 구축</p>
+                        <h5 class="reference_project_title">MES & ERP</h5>
+                        <p class="reference_project_description">생산·공정·실적 관리 시스템, 설비/POP 연동, 통합 ERP 솔루션 구축</p>
                         <ul class="reference_project_list">
                             <li>• 생산·공정·실적 관리 시스템 구축</li>
-                            <li>• 설비/POP 연동 시스템</li>
+                            <li>• 설비/POP 연동 및 실시간 모니터링</li>
                             <li>• 품질 이력 관리 시스템</li>
-                            <li>• MES 운영 및 유지보수</li>
+                            <li>• ERP 구축 및 고도화</li>
+                            <li>• 3PL/4PL 물류 통합 시스템</li>
                         </ul>
                     </div>
                 </div>
@@ -232,11 +618,133 @@
         </div> <!-- container -->
     </section>
 
+    <!-- 연도별 수행 연혁 타임라인 -->
+    <section class="timeline_section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="section_title text-center pb-20">
+                        <div class="section_icon mb-3">
+                            <i class="lni lni-calendar" style="font-size: 42px; color: #0066FF;"></i>
+                        </div>
+                        <h3 class="title">수행 <span>연혁</span></h3>
+                        <p style="color: #666; margin-top: 10px;">연도별 주요 사업 수행 실적</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="timeline_container">
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                            <div class="timeline_year">2025</div>
+                            <div class="timeline_content">
+                                <h6>교과서검정 시스템 고도화 및 물류 플랫폼 확장</h6>
+                                <p>• 교과서검정 전산시스템 유지보수 및 고도화 사업 수행<br>
+                                   • 3PL → 4PL 수준 물류 통합 운영 시스템 확장 구조 업그레이드</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <div class="timeline_year">2024</div>
+                            <div class="timeline_content">
+                                <h6>대규모 물류·유통 시스템 및 ERP 구축</h6>
+                                <p>• 대규모 물류·유통 기업 대상 3PL 통합 운영 시스템 구축<br>
+                                   • 수입·유통 ERP 신규 구축 (수입, 단가, 통관, 품목 관리 등 전 프로세스)</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                            <div class="timeline_year">2023</div>
+                            <div class="timeline_content">
+                                <h6>AI 디지털교과서 개발 및 기술 특허</h6>
+                                <p>• AI 디지털교과서 검정 프로세스 개발<br>
+                                   • ERP 모바일/웹 기능 고도화 및 1차 리뉴얼<br>
+                                   • 스마트 수배전반 예지보전 시스템 특허 출원 및 기술 등록</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+                            <div class="timeline_year">2022</div>
+                            <div class="timeline_content">
+                                <h6>클라우드 이전 및 R&D 과제 수행</h6>
+                                <p>• 공공기관 클라우드 이전 사업 수행<br>
+                                   • 스마트 수배전반 예지보전 플랫폼 정부 R&D 과제 (창업성장 기술개발 사업)<br>
+                                   • ERP 리뉴얼 및 재구축, 클라우드 기반 전사 시스템 재정비<br>
+                                   • 혁신성장 벤처기업 인증 획득</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                            <div class="timeline_year">2021</div>
+                            <div class="timeline_content">
+                                <h6>스마트팩토리 및 교육시스템 구축</h6>
+                                <p>• 스마트팩토리 구축 사업 (생산 관리, 경영 관리, 수·발주 관리 통합)<br>
+                                   • 전력 제어/PLC 시스템 구축<br>
+                                   • 온라인 교육 과정·강사 운영 시스템(LMS) 구축</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.7s">
+                            <div class="timeline_year">2020</div>
+                            <div class="timeline_content">
+                                <h6>공공정보화 사업 및 프레임워크 개발</h6>
+                                <p>• 한국교육과정평가원 교과서검정 시스템 참여<br>
+                                   • 광역 단위 유통기반(농산물 등) 정보화 시스템 구축<br>
+                                   • PostgreSQL 기반 프레임워크 개발 (DB 라이선스 비용 절감)<br>
+                                   • 가스·전력 제어용 PLC 시스템 구축</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
+                            <div class="timeline_year">2018</div>
+                            <div class="timeline_content">
+                                <h6>(주)에듀엠텍 설립</h6>
+                                <p>• 공공기관 정보시스템 전문 기업으로 출발<br>
+                                   • 교육·제조 IT 통합 파트너로서의 비전 수립</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!--====== REFERENCE PART ENDS ======-->
+
+    <!--====== CTA SECTION START ======-->
+    
+    <section class="cta_section" style="background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%); padding: 80px 0; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/></svg>'); opacity: 0.3;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="cta_content text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h3 style="font-size: 32px; font-weight: 700; color: white; margin-bottom: 20px;">프로젝트 성공의 파트너가 되어드립니다</h3>
+                        <p style="font-size: 16px; color: rgba(255,255,255,0.95); margin-bottom: 35px; line-height: 1.7;">
+                            7년 이상의 경험과 50개 이상의 프로젝트 수행 실적으로<br>
+                            귀사의 디지털 전환을 성공적으로 이끌어드리겠습니다.
+                        </p>
+                        <div class="cta_buttons">
+                            <a href="contact.html" class="btn" style="display: inline-block; padding: 15px 40px; background: white; color: #0066FF; border-radius: 30px; text-decoration: none; font-weight: 600; margin: 0 10px 10px; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);">
+                                <i class="lni lni-envelope mr-2"></i>프로젝트 문의
+                            </a>
+                            <a href="services.html" class="btn" style="display: inline-block; padding: 15px 40px; background: transparent; color: white; border: 2px solid white; border-radius: 30px; text-decoration: none; font-weight: 600; margin: 0 10px 10px; transition: all 0.3s ease;">
+                                <i class="lni lni-briefcase mr-2"></i>사업분야 보기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--====== CTA SECTION ENDS ======-->
     
     <!--====== FOOTER PART START ======-->
 
     <div id="footer-placeholder"></div>
+
+    <!--====== FOOTER PART ENDS ======-->
 
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -266,8 +774,80 @@
     
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+
+    <!--====== Custom Scripts ======-->
+    <script>
+        $(document).ready(function() {
+            // 필터 기능
+            $('.filter_btn').on('click', function() {
+                var filter = $(this).data('filter');
+                
+                // 활성 버튼 변경
+                $('.filter_btn').removeClass('active');
+                $(this).addClass('active');
+                
+                // 카드 필터링
+                if (filter === 'all') {
+                    $('.reference_case_card').parent().fadeIn(400);
+                } else {
+                    $('.reference_case_card').parent().hide();
+                    $('.reference_case_card[data-category*="' + filter + '"]').parent().fadeIn(400);
+                }
+            });
+
+            // CTA 버튼 호버 효과
+            $('.cta_buttons .btn').hover(
+                function() {
+                    $(this).css('transform', 'translateY(-3px)');
+                    if ($(this).css('background-color') === 'rgb(255, 255, 255)' || $(this).css('background-color') === 'white') {
+                        $(this).css('box-shadow', '0 8px 30px rgba(0, 0, 0, 0.3)');
+                    }
+                },
+                function() {
+                    $(this).css('transform', 'translateY(0)');
+                    if ($(this).css('background-color') === 'rgb(255, 255, 255)' || $(this).css('background-color') === 'white') {
+                        $(this).css('box-shadow', '0 5px 20px rgba(0, 0, 0, 0.2)');
+                    }
+                }
+            );
+
+            // 파트너 문의 버튼 호버
+            $('a[href="contact.html"]').hover(
+                function() {
+                    if (!$(this).parent().hasClass('cta_buttons')) {
+                        $(this).css({
+                            'transform': 'translateY(-2px)',
+                            'box-shadow': '0 8px 30px rgba(0, 102, 255, 0.4)'
+                        });
+                    }
+                },
+                function() {
+                    if (!$(this).parent().hasClass('cta_buttons')) {
+                        $(this).css({
+                            'transform': 'translateY(0)',
+                            'box-shadow': '0 5px 20px rgba(0, 102, 255, 0.3)'
+                        });
+                    }
+                }
+            );
+
+            // 스크롤 시 요소 페이드인
+            function checkScroll() {
+                $('.fade-in-up').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var viewportBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (elementTop < viewportBottom - 100) {
+                        $(this).addClass('active');
+                    }
+                });
+            }
+            
+            $(window).on('scroll', checkScroll);
+            checkScroll();
+        });
+    </script>
     
 </body>
 
 </html>
-
