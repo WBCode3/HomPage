@@ -1,0 +1,855 @@
+<!doctype html>
+<html class="no-js" lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    
+    <!--====== Title ======-->
+    <title>고객지원 - 에듀엠텍</title>
+    
+    <meta name="description" content="에듀엠텍은 전자정부표준프레임워크 기반 공공기관 정보시스템 구축, 스마트팩토리, 물류 플랫폼, 통합 업무시스템을 제공하는 종합 IT 솔루션 기업입니다.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        
+        
+    <!--====== Animate CSS ======-->
+    <link rel="stylesheet" href="assets/css/animate.css">
+        
+    <!--====== Nice Select CSS ======-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+        
+        
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css">
+        
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.4.5.2.min.css">
+    
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+    
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!--====== Custom Page Styles ======-->
+    <style>
+        /* 배경색 */
+        .bg-gray-alt {
+            background-color: #F8F9FC;
+        }
+
+        /* 섹션 아이콘 */
+        .section_icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #E8F2FF 0%, #F0F7FF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section_title .title span {
+            color: #0066FF;
+        }
+
+        /* 연락처 정보 카드 */
+        .contact_info_wrapper {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+        }
+
+        .single_contact_info {
+            background: #F8F9FC;
+            padding: 35px 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-left: 4px solid #E8EEFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .single_contact_info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0066FF 0%, #4D94FF 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: top;
+        }
+
+        .single_contact_info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.15);
+            border-left-color: transparent;
+        }
+
+        .single_contact_info:hover::before {
+            transform: scaleY(1);
+        }
+
+        .single_contact_info .contact_icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #E8F2FF 0%, #F0F7FF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .single_contact_info:hover .contact_icon {
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            transform: rotateY(360deg);
+        }
+
+        .single_contact_info .contact_icon i {
+            font-size: 28px;
+            color: #0066FF;
+            transition: all 0.3s ease;
+        }
+
+        .single_contact_info:hover .contact_icon i {
+            color: white;
+        }
+
+        .single_contact_info .title {
+            color: #2C2C2C;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center !important;
+        }
+
+        .single_contact_info p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .single_contact_info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .single_contact_info a {
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .single_contact_info a:hover {
+            color: #004FCE !important;
+        }
+
+        /* 문의 폼 섹션 */
+        .inquiry_form_section {
+            background: #F8F9FC;
+            padding: 80px 0;
+        }
+
+        .inquiry_form_wrapper {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .form_group {
+            margin-bottom: 25px;
+        }
+
+        .form_group label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .form_group label .required {
+            color: #FF4444;
+            margin-left: 3px;
+        }
+
+        .form_control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #E8EEFF;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #2C2C2C;
+            transition: all 0.3s ease;
+            background: #F8F9FC;
+        }
+
+        .form_control:focus {
+            outline: none;
+            border-color: #0066FF;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+
+        .form_control::placeholder {
+            color: #999;
+        }
+
+        textarea.form_control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit_btn {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .submit_btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.4);
+        }
+
+        .submit_btn i {
+            margin-right: 8px;
+        }
+
+        /* 지도 컨테이너 */
+        .contact_map {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            height: 100%;
+        }
+
+        .contact_map .title {
+            color: #2C2C2C;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .contact_map .map_address {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .contact_map iframe {
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 빠른 연락 섹션 */
+        .quick_contact_section {
+            background: linear-gradient(135deg, #0066FF 0%, #4D94FF 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick_contact_section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .quick_contact_item {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quick_contact_icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .quick_contact_item:hover .quick_contact_icon {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .quick_contact_icon i {
+            font-size: 32px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .quick_contact_item:hover .quick_contact_icon i {
+            color: #0066FF;
+        }
+
+        .quick_contact_item h5 {
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .quick_contact_item p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .quick_contact_item a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .quick_contact_item a:hover {
+            border-bottom-color: white;
+        }
+
+        /* 업무 시간 안내 */
+        .business_hours {
+            background: #E8F2FF;
+            padding: 25px 30px;
+            border-radius: 12px;
+            border-left: 4px solid #0066FF;
+            margin-top: 30px;
+        }
+
+        .business_hours h5 {
+            color: #0066FF;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .business_hours p {
+            color: #555;
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .business_hours p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 991px) {
+            .contact_info_wrapper,
+            .inquiry_form_wrapper {
+                padding: 40px 30px;
+            }
+
+            .single_contact_info {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact_info_wrapper,
+            .inquiry_form_wrapper {
+                padding: 30px 20px;
+            }
+
+            .single_contact_info {
+                padding: 25px 20px;
+            }
+
+            .contact_map {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .quick_contact_item {
+                margin-bottom: 20px;
+            }
+
+            .submit_btn {
+                padding: 16px 30px;
+            }
+        }
+
+        /* 체크박스 스타일 */
+        .checkbox_group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .checkbox_group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #0066FF;
+        }
+
+        .checkbox_group label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: #555;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+    <!--====== PRELOADER PART START ======-->
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== PRELOADER PART ENDS ======-->
+
+    <!--====== HEADER PART START ======-->
+
+    <section class="header_area">
+        <div id="header-placeholder"></div>
+
+        <div class="header_slider">
+            <div class="single_slider bg_cover d-flex align-items-center" style="background-image: url(assets/images/hero-area.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8">
+                            <div class="slider_content">
+                                <h2 class="slider_title wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.2s">고객지원</h2>
+                                <p class="wow fadeInLeftBig" data-wow-duration="1.3s" data-wow-delay="0.5s">프로젝트 문의 및 상담이 필요하신가요?<br>언제든지 연락주세요</p>
+                            </div> <!-- slider content -->
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </div> <!-- single slider -->
+        </div> <!-- header slider -->
+    </section>
+
+    <!--====== HEADER PART ENDS ======-->
+
+    <!--====== QUICK CONTACT SECTION START ======-->
+
+    <section class="quick_contact_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="quick_contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="quick_contact_icon">
+                            <i class="lni lni-phone"></i>
+                        </div>
+                        <h5>전화 문의</h5>
+                        <p><a href="tel:02-463-3664">02-463-3664</a></p>
+                        <p style="font-size: 13px; margin-top: 5px;">평일 09:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <div class="quick_contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <div class="quick_contact_icon">
+                            <i class="lni lni-envelope"></i>
+                        </div>
+                        <h5>이메일 문의</h5>
+                        <p><a href="mailto:info@edumtech.co.kr">info@edumtech.co.kr</a></p>
+                        <p style="font-size: 13px; margin-top: 5px;">24시간 접수 가능</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="quick_contact_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <div class="quick_contact_icon">
+                            <i class="lni lni-printer"></i>
+                        </div>
+                        <h5>팩스</h5>
+                        <p>02-463-0962</p>
+                        <p style="font-size: 13px; margin-top: 5px;">24시간 접수 가능</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== QUICK CONTACT SECTION ENDS ======-->
+    
+    <!--====== CONTACT INFO PART START ======-->
+
+    <section id="contact-info" class="contact_area pt-100 pb-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section_title text-center pb-50">
+                        <div class="section_icon mb-3">
+                            <i class="lni lni-map-marker" style="font-size: 42px; color: #0066FF;"></i>
+                        </div>
+                        <h3 class="title">연락처 <span>정보</span></h3>
+                        <p style="color: #666; margin-top: 10px;">에듀엠텍으로 문의주세요</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="contact_info_wrapper wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <div class="row">
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="single_contact_info">
+                                    <div class="contact_icon">
+                                        <i class="lni lni-briefcase"></i>
+                                    </div>
+                                    <h4 class="title text-center">사업자 정보</h4>
+                                    <p><strong>사업자등록번호</strong><br>119-86-77942</p>
+                                    <p><strong>설립연도</strong><br>2018년</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <div class="single_contact_info">
+                                    <div class="contact_icon">
+                                        <i class="lni lni-map-marker"></i>
+                                    </div>
+                                    <h4 class="title text-center">본사</h4>
+                                    <p>서울시 성동구 성수일로 47<br>송도빌딩 301호<br>(우04779)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="single_contact_info">
+                                    <div class="contact_icon">
+                                        <i class="lni lni-map"></i>
+                                    </div>
+                                    <h4 class="title text-center">충북혁신도시</h4>
+                                    <p>충청북도 진천군 덕산읍<br>대월1길 25-1<br>1동 302호</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 업무 시간 안내 -->
+                        <div class="business_hours wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                            <h5><i class="lni lni-timer mr-2"></i>업무 시간 안내</h5>
+                            <p><strong>평일:</strong> 09:00 - 18:00 (점심시간 12:00 - 13:00)</p>
+                            <p><strong>토요일, 일요일, 공휴일:</strong> 휴무</p>
+                            <p><strong>이메일 문의:</strong> 24시간 접수 가능 (영업일 기준 24시간 내 회신)</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== CONTACT INFO PART ENDS ======-->
+
+    
+    <!--====== LOCATION MAP SECTION START ======-->
+
+    <section id="location-map" class="contact_area pt-100 pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section_title text-center pb-50">
+                        <div class="section_icon mb-3">
+                            <i class="lni lni-map" style="font-size: 42px; color: #0066FF;"></i>
+                        </div>
+                        <h3 class="title">오시는 <span>길</span></h3>
+                        <p style="color: #666; margin-top: 10px;">에듀엠텍으로 오시는 길을 안내해드립니다</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="contact_map wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h4 class="title mb-3 text-center"><i class="lni lni-map-marker mr-2"></i>본사</h4>
+                        <p class="map_address">서울시 성동구 성수일로 47 송도빌딩 301호 (우04779)</p>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d949.5909419471209!2d127.04874983977746!3d37.54496010799421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca49a18b482b7%3A0x3ea1d3081d023f7a!2z7ISc7Jq47Yq567OE7IucIOyEseuPmeq1rCDshLHsiJjsnbTroZwgNDc!5e0!3m2!1sko!2skr!4v1762736602908!5m2!1sko!2skr" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div> <!-- contact map -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact_map wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <h4 class="title mb-3 text-center"><i class="lni lni-map-marker mr-2"></i>충북혁신도시</h4>
+                        <p class="map_address">충청북도 진천군 덕산읍 대월1길 25-1, 1동 302호</p>
+                        <iframe 
+                            src="https://www.google.com/maps?q=충청북도+진천군+덕산읍+대월1길+25-1&output=embed&zoom=17&hl=ko" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div> <!-- contact map -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container --></section>
+
+    <!--====== LOCATION MAP SECTION ENDS ======-->
+    
+    <!--====== FOOTER PART START ======-->
+
+    <div id="footer-placeholder"></div>
+
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.4.5.2.min.js"></script>
+
+    
+    <!--====== Scrolling Nav js ======-->
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/scrolling-nav.js"></script>
+    
+    <!--====== Counter Up js ======-->
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    
+    <!--====== Nice Select js ======-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    
+    <!--====== WOW js ======-->
+    <script src="assets/js/wow.min.js"></script>
+    
+    <!--====== Load Common Parts js ======-->
+    <script src="assets/js/load-common.js"></script>
+    
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
+
+    <!--====== Custom Scripts ======-->
+    <script>
+        $(document).ready(function() {
+            // 폼 제출 처리
+            $('#inquiryForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // 폼 유효성 검사
+                if (!validateForm()) {
+                    return false;
+                }
+                
+                // 실제 환경에서는 AJAX로 서버에 전송
+                // 여기서는 시뮬레이션
+                submitInquiry();
+            });
+
+            // 폼 유효성 검사
+            function validateForm() {
+                var name = $('#name').val().trim();
+                var email = $('#email').val().trim();
+                var phone = $('#phone').val().trim();
+                var category = $('#category').val();
+                var subject = $('#subject').val().trim();
+                var message = $('#message').val().trim();
+                var privacy = $('#privacy').is(':checked');
+
+                if (name === '') {
+                    alert('이름을 입력해주세요.');
+                    $('#name').focus();
+                    return false;
+                }
+
+                if (email === '') {
+                    alert('이메일을 입력해주세요.');
+                    $('#email').focus();
+                    return false;
+                }
+
+                // 이메일 형식 검사
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert('올바른 이메일 형식을 입력해주세요.');
+                    $('#email').focus();
+                    return false;
+                }
+
+                if (phone === '') {
+                    alert('연락처를 입력해주세요.');
+                    $('#phone').focus();
+                    return false;
+                }
+
+                // 전화번호 형식 검사 (간단한 버전)
+                var phonePattern = /^[0-9-]+$/;
+                if (!phonePattern.test(phone)) {
+                    alert('올바른 연락처 형식을 입력해주세요.');
+                    $('#phone').focus();
+                    return false;
+                }
+
+                if (category === '') {
+                    alert('문의 분야를 선택해주세요.');
+                    $('#category').focus();
+                    return false;
+                }
+
+                if (subject === '') {
+                    alert('문의 제목을 입력해주세요.');
+                    $('#subject').focus();
+                    return false;
+                }
+
+                if (message === '') {
+                    alert('문의 내용을 입력해주세요.');
+                    $('#message').focus();
+                    return false;
+                }
+
+                if (!privacy) {
+                    alert('개인정보 수집 및 이용에 동의해주세요.');
+                    $('#privacy').focus();
+                    return false;
+                }
+
+                return true;
+            }
+
+            // 문의 제출
+            function submitInquiry() {
+                // 제출 버튼 비활성화
+                $('.submit_btn').prop('disabled', true).html('<i class="lni lni-spinner-arrow"></i>전송 중...');
+
+                // 실제 환경에서는 AJAX를 사용하여 서버로 전송
+                /*
+                $.ajax({
+                    url: '/api/inquiry',
+                    type: 'POST',
+                    data: $('#inquiryForm').serialize(),
+                    success: function(response) {
+                        alert('문의가 성공적으로 접수되었습니다.\n빠른 시일 내에 답변드리겠습니다.');
+                        $('#inquiryForm')[0].reset();
+                        $('.submit_btn').prop('disabled', false).html('<i class="lni lni-envelope"></i>문의하기');
+                    },
+                    error: function() {
+                        alert('문의 접수 중 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.');
+                        $('.submit_btn').prop('disabled', false).html('<i class="lni lni-envelope"></i>문의하기');
+                    }
+                });
+                */
+
+                // 시뮬레이션 (2초 후 성공 메시지)
+                setTimeout(function() {
+                    alert('문의가 성공적으로 접수되었습니다.\n빠른 시일 내에 답변드리겠습니다.');
+                    $('#inquiryForm')[0].reset();
+                    $('.submit_btn').prop('disabled', false).html('<i class="lni lni-envelope"></i>문의하기');
+                }, 2000);
+            }
+
+            // 전화번호 자동 하이픈 추가
+            $('#phone').on('input', function() {
+                var value = $(this).val().replace(/[^0-9]/g, '');
+                var formattedValue = '';
+
+                if (value.length <= 3) {
+                    formattedValue = value;
+                } else if (value.length <= 7) {
+                    formattedValue = value.substr(0, 3) + '-' + value.substr(3);
+                } else if (value.length <= 11) {
+                    formattedValue = value.substr(0, 3) + '-' + value.substr(3, 4) + '-' + value.substr(7);
+                } else {
+                    formattedValue = value.substr(0, 3) + '-' + value.substr(3, 4) + '-' + value.substr(7, 4);
+                }
+
+                $(this).val(formattedValue);
+            });
+
+            // 셀렉트 박스 스타일링 (nice-select 사용 시)
+            if ($.fn.niceSelect) {
+                $('.form_control').niceSelect();
+            }
+
+            // 스크롤 애니메이션
+            function checkScroll() {
+                $('.fade-in-up').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var viewportBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (elementTop < viewportBottom - 100) {
+                        $(this).addClass('active');
+                    }
+                });
+            }
+            
+            $(window).on('scroll', checkScroll);
+            checkScroll();
+
+            // 부드러운 스크롤
+            $('a[href*="#"]').on('click', function(e) {
+                var target = $(this.hash);
+                if (target.length) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 800);
+                }
+            });
+
+            // 입력 필드 포커스 효과
+            $('.form_control').on('focus', function() {
+                $(this).parent().addClass('focused');
+            }).on('blur', function() {
+                $(this).parent().removeClass('focused');
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
